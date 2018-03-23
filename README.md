@@ -66,6 +66,9 @@ $factory->addOperator(new Procedure('ABS', 1, function(array $operands, Context 
     }
     return $value;
 }));
+
+$tokens = $parser->parse('abs(-1.2)');
+$result = $evaluator->evaluate($tokens, $context);
 ```
 
 ## License
