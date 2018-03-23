@@ -59,7 +59,7 @@ Extending the expression factory to incorporate more functions involves adding a
 use Xylemical\Expressions\Token;
 use Xylemical\Expressions\Procedure;
 
-$factory->addOperator(new Procedure('ABS', function(array $operands, Context $context, Token $token) {
+$factory->addOperator(new Procedure('ABS', 1, function(array $operands, Context $context, Token $token) {
     $value = $token->getValue();
     if (substr($value, 0, 1) === '-') {
         return substr($value, 1);
