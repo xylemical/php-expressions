@@ -21,6 +21,11 @@ class ContextTest extends TestCase
 
         $context->setVariable('a', 10);
         $this->assertEquals($context->getVariable('a'), 10);
+        $this->assertTrue($context->hasVariable('a'));
+
+        // Check a variable gets deleted.
+        $context->setVariable('a', null);
+        $this->assertFalse($context->hasVariable('a'));
     }
 
     /**

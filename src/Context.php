@@ -67,8 +67,24 @@ class Context
      */
     public function setVariable($name, $value)
     {
-        $this->variables[$name] = $value;
+        if (is_null($value)) {
+            unset($this->variables[$name]);
+        }
+        else {
+            $this->variables[$name] = $value;
+        }
         return $this;
+    }
+
+    /**
+     * Indicate the $name variable has a value.
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    public function hasVariable($name) {
+        return array_key_exists($name, $this->variables);
     }
 
     /**
