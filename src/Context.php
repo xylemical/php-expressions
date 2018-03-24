@@ -22,6 +22,16 @@ class Context
     protected $variables = [];
 
     /**
+     * Context constructor.
+     *
+     * @param array $variables
+     */
+    public function __construct(array $variables = [])
+    {
+        $this->setVariables($variables);
+    }
+
+    /**
      * Get a variable by name, with default support.
      *
      * @param string $name
@@ -38,6 +48,16 @@ class Context
     }
 
     /**
+     * Get the full list of variables for the context.
+     *
+     * @return array
+     */
+    public function getVariables()
+    {
+        return $this->variables;
+    }
+
+    /**
      * Set a variable value by name.
      *
      * @param string $name
@@ -48,6 +68,21 @@ class Context
     public function setVariable($name, $value)
     {
         $this->variables[$name] = $value;
+        return $this;
+    }
+
+    /**
+     * Set a bunch of variables.
+     *
+     * @param array $variables
+     *
+     * @return $this
+     */
+    public function setVariables(array $variables)
+    {
+        foreach ($variables as $key => $value) {
+            $this->setVariable($key, $value);
+        }
         return $this;
     }
 }

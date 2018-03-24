@@ -22,4 +22,19 @@ class ContextTest extends TestCase
         $context->setVariable('a', 10);
         $this->assertEquals($context->getVariable('a'), 10);
     }
+
+    /**
+     * Test the full get/set of the context.
+     */
+    public function testFullCrud()
+    {
+        $test = [
+          'a' => 1,
+          'b' => 2,
+        ];
+
+        $context = new Context((array)$test);
+
+        $this->assertEquals($test, $context->getVariables());
+    }
 }
