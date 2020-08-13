@@ -25,7 +25,7 @@ use Xylemical\Expressions\Parser;
 $math = new BcMath();
 $factory = new ExpressionFactory($math);
 $lexer = new Lexer($factory);
-$parser = new Parser($parser);
+$parser = new Parser($lexer);
 $evaluator = new Evaluator();
 $context = new Context();
 
