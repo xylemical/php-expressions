@@ -38,61 +38,61 @@ class ExpressionFactory
             }));
 
         // Provide the default mathematical operators.
-        $this->addOperator(new Operator('\+', 4, Operator::LEFT_ASSOCIATIVE, 2,
+        $this->addOperator(new Operator('\+', 5, Operator::LEFT_ASSOCIATIVE, 2,
             function($values) {
                 return $this->math->add($values[0], $values[1]);
             }))
-          ->addOperator(new Operator('\-', 4, Operator::LEFT_ASSOCIATIVE, 2,
+          ->addOperator(new Operator('\-', 5, Operator::LEFT_ASSOCIATIVE, 2,
             function($values) {
                 return $this->math->subtract($values[0], $values[1]);
             }))
-          ->addOperator(new Operator('\*', 5, Operator::LEFT_ASSOCIATIVE, 2,
+          ->addOperator(new Operator('\*', 6, Operator::LEFT_ASSOCIATIVE, 2,
             function($values) {
                 return $this->math->multiply($values[0], $values[1]);
             }))
-          ->addOperator(new Operator('\/', 5, Operator::LEFT_ASSOCIATIVE, 2,
+          ->addOperator(new Operator('\/', 6, Operator::LEFT_ASSOCIATIVE, 2,
             function($values) {
                 return $this->math->divide($values[0], $values[1]);
             }))
-          ->addOperator(new Operator('\%', 5, Operator::LEFT_ASSOCIATIVE, 2,
+          ->addOperator(new Operator('\%', 6, Operator::LEFT_ASSOCIATIVE, 2,
             function($values) {
                 return $this->math->modulus($values[0], $values[1]);
             }));
 
         // Provide the default comparison operators.
         $this
-          ->addOperator(new Operator('==', 3, Operator::LEFT_ASSOCIATIVE, 2,
+          ->addOperator(new Operator('==', 4, Operator::LEFT_ASSOCIATIVE, 2,
             function($values) {
                 return (int)($this->math->compare($values[0], $values[1]) === 0);
             }))
-          ->addOperator(new Operator('!=', 3, Operator::LEFT_ASSOCIATIVE, 2,
+          ->addOperator(new Operator('!=', 4, Operator::LEFT_ASSOCIATIVE, 2,
             function($values) {
                 return (int)($this->math->compare($values[0], $values[1]) !== 0);
             }))
-          ->addOperator(new Operator('<', 3, Operator::LEFT_ASSOCIATIVE, 2,
+          ->addOperator(new Operator('<', 4, Operator::LEFT_ASSOCIATIVE, 2,
             function($values) {
                 return (int)($this->math->compare($values[0], $values[1]) < 0);
             }))
-          ->addOperator(new Operator('<=', 3, Operator::LEFT_ASSOCIATIVE, 2,
+          ->addOperator(new Operator('<=', 4, Operator::LEFT_ASSOCIATIVE, 2,
             function($values) {
                 return (int)($this->math->compare($values[0], $values[1]) <= 0);
             }))
-          ->addOperator(new Operator('>', 3, Operator::LEFT_ASSOCIATIVE, 2,
+          ->addOperator(new Operator('>', 4, Operator::LEFT_ASSOCIATIVE, 2,
             function($values) {
                 return (int)($this->math->compare($values[0], $values[1]) > 0);
             }))
-          ->addOperator(new Operator('>=', 3, Operator::LEFT_ASSOCIATIVE, 2,
+          ->addOperator(new Operator('>=', 4, Operator::LEFT_ASSOCIATIVE, 2,
             function($values) {
                 return (int)($this->math->compare($values[0], $values[1]) >= 0);
             }));
 
         // Provide basic logic operators.
         $this
-          ->addOperator(new Operator('AND', 2, Operator::NONE_ASSOCIATIVE, 2,
+          ->addOperator(new Operator('AND', 3, Operator::LEFT_ASSOCIATIVE, 2,
             function($values) {
                 return (int)($this->math->native($values[0]) && $this->math->native($values[1]));
             }))
-          ->addOperator(new Operator('OR', 2, Operator::NONE_ASSOCIATIVE, 2,
+          ->addOperator(new Operator('OR', 2, Operator::LEFT_ASSOCIATIVE, 2,
             function($values) {
                 return (int)($this->math->native($values[0]) || $this->math->native($values[1]));
             }))
