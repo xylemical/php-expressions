@@ -57,7 +57,7 @@ class EvaluatorTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '2');
+        $this->assertEquals('2', $result);
     }
 
     /**
@@ -69,13 +69,13 @@ class EvaluatorTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '-1');
+        $this->assertEquals('-1', $result);
 
         $tokens = $this->parser->parse('max(00, -1)');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
     }
 
     /**
@@ -87,7 +87,7 @@ class EvaluatorTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '20');
+        $this->assertEquals('20', $result);
     }
 
     /**
@@ -138,7 +138,7 @@ class EvaluatorTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '1');
+        $this->assertEquals('1', $result);
     }
 
 }

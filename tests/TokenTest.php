@@ -17,7 +17,7 @@ class TokenTest extends TestCase
     {
         $token = new Token('');
 
-        $this->assertEquals($token->getPrecedence(), 0);
+        $this->assertEquals(0, $token->getPrecedence());
     }
 
     /**
@@ -25,7 +25,7 @@ class TokenTest extends TestCase
      */
     public function testAssociativity() {
         $token = new Token('');
-        $this->assertEquals($token->getAssociativity(), Operator::NONE_ASSOCIATIVE);
+        $this->assertEquals(Operator::NONE_ASSOCIATIVE, $token->getAssociativity());
     }
 
     /**

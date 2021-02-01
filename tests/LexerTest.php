@@ -42,7 +42,7 @@ class LexerTest extends TestCase
         $tokens = $this->lexer->tokenize('1-2.3*4/5%$a==(1--2.3)*(4/5)');
 
         // Check there are the right number of tokens.
-        $this->assertEquals(count($tokens), 21);
+        $this->assertEquals(21, count($tokens));
 
         // Check each of the token values to ensure they match.
         $expected = [
@@ -50,7 +50,7 @@ class LexerTest extends TestCase
           '(', '1', '-', '-2.3', ')', '*', '(', '4', '/', '5', ')',
         ];
         foreach ($expected as $index => $value) {
-            $this->assertEquals($tokens[$index]->getValue(), $value);
+            $this->assertEquals($value, $tokens[$index]->getValue());
         }
     }
 
@@ -63,7 +63,7 @@ class LexerTest extends TestCase
         $tokens = $this->lexer->tokenize('1 - 2.3 * 4 / 5 % $a == (1 - -2.3) * (4 / 5)');
 
         // Check there are the right number of tokens.
-        $this->assertEquals(count($tokens), 21);
+        $this->assertEquals(21, count($tokens));
 
         // Check each of the token values to ensure they match.
         $expected = [
@@ -71,7 +71,7 @@ class LexerTest extends TestCase
           '(', '1', '-', '-2.3', ')', '*', '(', '4', '/', '5', ')',
         ];
         foreach ($expected as $index => $value) {
-            $this->assertEquals($tokens[$index]->getValue(), $value);
+            $this->assertEquals($value, $tokens[$index]->getValue());
         }
     }
 

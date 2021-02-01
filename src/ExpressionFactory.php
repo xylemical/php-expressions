@@ -34,7 +34,9 @@ class ExpressionFactory
 
         // Provide the base numerical value.
         $this->addOperator(new Value('(?<!\d)-?\d+(?:\.\d+)?', function($values, Context $context, Token $token) {
-                return $token->getValue();
+                // Remove extraneous zeros from the beginning of the value.
+                $value = ltrim($token->getValue(), '0');
+                return !$value ? '0' : $value;
             }));
 
         // Provide the default mathematical operators.
