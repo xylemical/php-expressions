@@ -56,7 +56,7 @@ class ExpressionFactoryTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '2');
+        $this->assertEquals('2', $result);
     }
 
     /**
@@ -67,7 +67,7 @@ class ExpressionFactoryTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
     }
 
     /**
@@ -78,7 +78,7 @@ class ExpressionFactoryTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '2');
+        $this->assertEquals('2', $result);
     }
 
     /**
@@ -89,7 +89,7 @@ class ExpressionFactoryTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '2');
+        $this->assertEquals('2', $result);
     }
 
     /**
@@ -100,7 +100,7 @@ class ExpressionFactoryTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '1');
+        $this->assertEquals('1', $result);
     }
 
     /**
@@ -111,19 +111,19 @@ class ExpressionFactoryTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '1');
+        $this->assertEquals('1', $result);
         
         $tokens = $this->parser->parse('2 == 3');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
         
         $tokens = $this->parser->parse('3 == 2');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
     }
 
     /**
@@ -134,19 +134,19 @@ class ExpressionFactoryTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
 
         $tokens = $this->parser->parse('2 < 3');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '1');
+        $this->assertEquals('1', $result);
 
         $tokens = $this->parser->parse('3 < 2');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
     }
 
     /**
@@ -157,19 +157,19 @@ class ExpressionFactoryTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '1');
+        $this->assertEquals('1', $result);
 
         $tokens = $this->parser->parse('2 <= 3');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '1');
+        $this->assertEquals('1', $result);
 
         $tokens = $this->parser->parse('3 <= 2');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
     }
 
     /**
@@ -180,19 +180,19 @@ class ExpressionFactoryTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
 
         $tokens = $this->parser->parse('2 > 3');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
 
         $tokens = $this->parser->parse('3 > 2');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '1');
+        $this->assertEquals('1', $result);
     }
 
     /**
@@ -203,19 +203,19 @@ class ExpressionFactoryTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '1');
+        $this->assertEquals('1', $result);
 
         $tokens = $this->parser->parse('2 >= 3');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
 
         $tokens = $this->parser->parse('3 >= 2');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '1');
+        $this->assertEquals('1', $result);
     }
 
     /**
@@ -226,19 +226,19 @@ class ExpressionFactoryTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
 
         $tokens = $this->parser->parse('2 != 3.5');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '1');
+        $this->assertEquals('1', $result);
 
         $tokens = $this->parser->parse('3 != 2');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '1');
+        $this->assertEquals('1', $result);
     }
 
     /**
@@ -249,25 +249,25 @@ class ExpressionFactoryTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '1');
+        $this->assertEquals('1', $result);
 
         $tokens = $this->parser->parse('2 AND 0');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
 
         $tokens = $this->parser->parse('0 AND 2');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
 
         $tokens = $this->parser->parse('0 AND 0');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
     }
 
     /**
@@ -278,25 +278,25 @@ class ExpressionFactoryTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '1');
+        $this->assertEquals('1', $result);
 
         $tokens = $this->parser->parse('2 OR 0');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '1');
+        $this->assertEquals('1', $result);
 
         $tokens = $this->parser->parse('0 OR 2');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '1');
+        $this->assertEquals('1', $result);
 
         $tokens = $this->parser->parse('0 OR 0');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
     }
 
     /**
@@ -307,13 +307,13 @@ class ExpressionFactoryTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
 
         $tokens = $this->parser->parse('NOT(0)');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '1');
+        $this->assertEquals('1', $result);
     }
 
     /**
@@ -324,13 +324,13 @@ class ExpressionFactoryTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
 
         $tokens = $this->parser->parse('MIN(0, 2)');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '0');
+        $this->assertEquals('0', $result);
     }
 
     /**
@@ -341,12 +341,12 @@ class ExpressionFactoryTest extends TestCase
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '2');
+        $this->assertEquals('2', $result);
 
         $tokens = $this->parser->parse('MAX(0, 2)');
 
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
-        $this->assertEquals($result, '2');
+        $this->assertEquals('2', $result);
     }
 }

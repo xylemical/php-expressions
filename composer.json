@@ -5,9 +5,6 @@
   "description": "An extensible mathematical expression parser and evaluator.",
   "keywords": ["expression evaluator","math parser", "shunting-yard algorithm", "math calculator"],
   "homepage": "https://github.com/xylemical/php-expressions",
-  "author": {
-    "name": "Xylemical"
-  },
   "require": {
     "php": ">=7.0.0"
   },
