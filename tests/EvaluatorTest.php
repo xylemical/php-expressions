@@ -127,4 +127,18 @@ class EvaluatorTest extends TestCase
         $result = $this->evaluator->evaluate($tokens, $this->context);
     }
 
+    /**
+     * Test that AND operator takes precedence over OR
+     *
+     * @return void
+     */
+    public function testBooleanOperatorsPrecedence()
+    {
+        $tokens = $this->parser->parse('0 AND 0 OR 1 AND 1 OR 1 AND 0');
+
+        $result = $this->evaluator->evaluate($tokens, $this->context);
+
+        $this->assertEquals($result, '1');
+    }
+
 }
