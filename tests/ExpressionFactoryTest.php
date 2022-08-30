@@ -28,7 +28,7 @@ class ExpressionFactoryTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -348,5 +348,54 @@ class ExpressionFactoryTest extends TestCase
         $result = $this->evaluator->evaluate($tokens, $this->context);
 
         $this->assertEquals('2', $result);
+    }
+
+    /**
+     * @dataProvider getScaleTestData
+     */
+    public function testScalePropertyIsApplied($scale, $expression, $expected)
+    {
+        $math = new BcMath($scale);
+        $factory = new ExpressionFactory($math);
+
+        $lexer = new Lexer($factory);;
+        $parser = new Parser($lexer);
+
+        $tokens = $parser->parse($expression);
+
+        $result = $this->evaluator->evaluate($tokens, $this->context);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function getScaleTestData()
+    {
+        return [
+            'multiplication' => [
+                'scale' => 3,
+                'expression' => '1.005 * 2',
+                'expected' => '2.010',
+            ],
+            'division' => [
+                'scale' => 4,
+                'expression' => '1.005 / 2',
+                'expected' => '0.5025',
+            ],
+            'division with reduced scale' => [
+                'scale' => 3,
+                'expression' => '1.005 / 2',
+                'expected' => '0.502',
+            ],
+            'addition' => [
+                'scale' => 5,
+                'expression' => '1.005 + 2',
+                'expected' => '3.00500',
+            ],
+            'subtraction' => [
+                'scale' => 3,
+                'expression' => '1.005 - 2',
+                'expected' => '-0.995',
+            ],
+        ];
     }
 }
