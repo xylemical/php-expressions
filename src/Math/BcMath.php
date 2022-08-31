@@ -16,31 +16,41 @@ use Xylemical\Expressions\MathInterface;
 class BcMath implements MathInterface
 {
     /**
-     * {@inheritdoc}
+     * @var int
      */
-    public function add($a, $b, $decimals = 0) {
-        return bcadd($a, $b, $decimals);
+    protected $scale = 0;
+
+    public function __construct($scale = 0)
+    {
+        $this->scale = (int)$scale;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function subtract($a, $b, $decimals = 0) {
-        return bcsub($a, $b, $decimals);
+    public function add($a, $b, $scale = null) {
+        return bcadd($a, $b, $scale ?? $this->scale);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function multiply($a, $b, $decimals = 0) {
-        return bcmul($a, $b, $decimals);
+    public function subtract($a, $b, $scale = null) {
+        return bcsub($a, $b, $scale ?? $this->scale);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function divide($a, $b, $decimals = 0) {
-        return bcdiv($a, $b, $decimals);
+    public function multiply($a, $b, $scale = null) {
+        return bcmul($a, $b, $scale ?? $this->scale);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function divide($a, $b, $scale = null) {
+        return bcdiv($a, $b, $scale ?? $this->scale);
     }
 
     /**
@@ -53,8 +63,8 @@ class BcMath implements MathInterface
     /**
      * {@inheritdoc}
      */
-    public function compare($a, $b, $decimals = 0) {
-        return bccomp($a, $b, $decimals);
+    public function compare($a, $b, $scale = null) {
+        return bccomp($a, $b, $scale ?? $this->scale);
     }
 
     /**

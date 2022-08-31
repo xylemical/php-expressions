@@ -19,7 +19,7 @@ class ParserTest extends TestCase
     /**
      * {@inheritdoc}
      */
-    public function setUp() {
+    public function setUp(): void {
         parent::setUp();
 
         $math = new BcMath();
@@ -27,7 +27,7 @@ class ParserTest extends TestCase
 
         // Add in variable processor for lexing.
         $factory->addOperator(new Value('\$[a-zA-Z_][a-zA-Z0-9_]*', function(array $operands, Context $context, Token $token) {
-            return $context->getVariable(substr($token, 1));
+            return $context->getVariable(substr($token->getValue(), 1));
         }));
 
         $lexer = new Lexer($factory);;
