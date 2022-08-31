@@ -6,8 +6,7 @@
   "keywords": ["expression evaluator","math parser", "shunting-yard algorithm", "math calculator"],
   "homepage": "https://github.com/xylemical/php-expressions",
   "require": {
-    "php": ">=7.1.0|>=8.0",
-    "ext-bcmath": "*"
+    "php": ">=7.1.0|>=8.0"
   },
   "autoload": {
     "psr-4": {
@@ -20,6 +19,7 @@
     }
   },
   "require-dev": {
-    "phpunit/phpunit": "^7.0|^8.0"
+    "phpunit/phpunit": "^7.0|^8.0",
+    "ext-bcmath": "*"
   }
 }
