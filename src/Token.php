@@ -26,7 +26,7 @@ class Token
     /**
      * Token constructor.
      */
-    public function __construct($value, Operator $operator = NULL)
+    public function __construct($value, ?Operator $operator = NULL)
     {
         $this->value = $value;
         $this->operator = $operator;
