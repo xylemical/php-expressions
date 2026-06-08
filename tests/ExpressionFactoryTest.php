@@ -5,6 +5,7 @@
 
 namespace Xylemical\Expressions;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Xylemical\Expressions\Math\BcMath;
 
@@ -351,8 +352,9 @@ class ExpressionFactoryTest extends TestCase
     }
 
     /**
-     * @dataProvider getScaleTestData
+     * Test scale is properly applied during calculations.
      */
+    #[DataProvider('getScaleTestData')]
     public function testScalePropertyIsApplied($scale, $expression, $expected)
     {
         $math = new BcMath($scale);
@@ -368,7 +370,10 @@ class ExpressionFactoryTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function getScaleTestData()
+    /**
+     * Provides the test data for the scale calculations.
+     */
+    public static function getScaleTestData()
     {
         return [
             'multiplication' => [

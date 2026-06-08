@@ -6,6 +6,13 @@ use PHPUnit\Framework\TestCase;
 
 class BcMathTest extends TestCase
 {
+    /**
+     * The math calculation.
+     *
+     * @var BcMath
+     */
+    protected $math;
+
     protected function setUp(): void
     {
         parent::setUp();
