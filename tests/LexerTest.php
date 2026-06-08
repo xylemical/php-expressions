@@ -87,4 +87,14 @@ class LexerTest extends TestCase
         // Tokenize a string.
         $this->lexer->tokenize('');
     }
+
+    /**
+     * Test an invalid token.
+     */
+    public function testInvalidToken()
+    {
+        $this->expectException('Xylemical\\Expressions\\LexerException');
+
+        $this->lexer->tokenize('UNDEFINED(5)');
+    }
 }

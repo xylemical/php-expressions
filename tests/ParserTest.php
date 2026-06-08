@@ -91,7 +91,7 @@ class ParserTest extends TestCase
     {
         $this->expectException('\\Xylemical\\Expressions\\ParserException');
 
-        $this->parser->parse('(a,');
+        $this->parser->parse('($a,');
     }
 
     /**
@@ -101,7 +101,7 @@ class ParserTest extends TestCase
     {
         $this->expectException('\\Xylemical\\Expressions\\ParserException');
 
-        $this->parser->parse('(a,a) + 2 )');
+        $this->parser->parse('($a,$a) + 2 )');
     }
 
     /**

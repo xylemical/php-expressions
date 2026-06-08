@@ -46,16 +46,18 @@ class Lexer
         // Get the operator regular expression.
         $regex = $this->getRegex($operators);
 
-        // Check that we have matched all the tokens in the string.
-        if (!preg_match_all($regex, $string, $matches, PREG_SET_ORDER)) {
-            throw new LexerException('Unable to tokenize string.');
+        // Break up the string into tokens.
+        $matches = preg_split($regex, $string, -1, PREG_SPLIT_DELIM_CAPTURE);
+        // Filter whitespace.
+        $matches = array_filter(array_map('trim', $matches), 'strlen');
+        // Verify expression exists.
+        if (count($matches) === 0) {
+            throw new LexerException("Invalid expression.");
         }
 
         // Cycle through all available tokens.
         $tokens = [];
-        foreach ($matches as $match) {
-            $item = $match[0];
-
+        foreach ($matches as $item) {
             // Process the parentheses as special cases.
             if (in_array($item, ['(', ')', ','])) {
                 $tokens[] = new Token($item);
@@ -67,9 +69,11 @@ class Lexer
             foreach ($operators as $operator) {
                 if (preg_match('#^' . $operator->getRegex() . '$#i', $item)) {
                     $tokens[] = new Token($item, $operator);
-                    break;
+                    continue 2;
                 }
             }
+
+            throw new LexerException("Invalid token '" . $item . "'");
         }
 
         return $tokens;
@@ -96,6 +100,6 @@ class Lexer
         $regexes[] = ',';
 
         // Generate the full regex.
-        return '#(?:' . implode('|', $regexes) . ')#i';
+        return '#(' . implode('|', $regexes) . ')#i';
     }
 }
